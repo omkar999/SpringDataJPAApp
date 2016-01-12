@@ -27,7 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = { "com.myapp" })
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-	// Add index.html in appropriate location and test this
+	// Add index.html in appropriate location and set this
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("forward:/index.html");
@@ -62,6 +62,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		
 		factory.setPersistenceUnitName("empPersistence");
+		
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(Boolean.TRUE);

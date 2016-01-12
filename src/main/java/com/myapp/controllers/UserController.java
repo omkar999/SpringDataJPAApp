@@ -1,7 +1,9 @@
 package com.myapp.controllers;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +16,12 @@ import com.myapp.entities.Employee;
 import com.myapp.repositories.EmployeeRepository;
 
 @Controller
-
 public class UserController {
+	
+	@PersistenceContext(name ="empPersistence")
+	EntityManager em;
+	
+	//Test injecting EntityManager
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -29,8 +35,7 @@ public class UserController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
 		System.out.println("in UserController homePage---------------------------");
-
-		//employeeRepository.save(new Employee(22, "Saint", "Peter", "Engineering"));
+/*		employeeRepository.save(new Employee("TEST1", "TEST", "Engineering"));*/
 		return "home";
 	}
 
