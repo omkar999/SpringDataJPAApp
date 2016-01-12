@@ -5,3 +5,5 @@ LocalContainerEntityManagerFactoryBean and LocalEntityManagerFactoryBean - Use i
 
 
 LocalSessionFactoryBean - Use it for Spring Hibernate Integration
+
+JPARepository extends PagingAndSortingRepository extends CrudRepository extends Repository(Marker)
