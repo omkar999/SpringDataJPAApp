@@ -73,7 +73,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		factory.setPackagesToScan("com.myapp.entities");
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
 		factory.setJpaProperties(jpaProperties);
 
 		factory.afterPropertiesSet();

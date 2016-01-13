@@ -8,15 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 	<h2>This is HOME Page</h2>
-	<form:form action="${pageContext.request.contextPath}/addUser" commandName="employee">
-		First Name: <input type="text" name="firstName">
-		<br /> 
-		Last Name: <input type="text" name="lastName" />
-		
-		 Designation: <input type="text" name="designation" />
-		<input type="submit" value="Submit" />
-	</form:form>
+	<br />
+
+<p> This is Home page...Check Out other TABS</p>
+
 
 </body>
 </html>
