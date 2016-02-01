@@ -3,12 +3,13 @@
  */
 package com.myapp.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Generated;
+import javax.persistence.OneToOne;
 
 /**
  * @author oputtagunta
@@ -20,7 +21,11 @@ public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int departmentId;
+
 	private String departmentName;
+
+	@OneToOne(mappedBy = "department", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Employee employee;
 
 	public int getDepartmentId() {
 		return departmentId;

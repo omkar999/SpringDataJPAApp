@@ -17,9 +17,16 @@ public class TestMappingsApp {
 		ctx.refresh();
 
 		oneToOne(ctx);
+		OneToMany(ctx);
 
 	}
 
+	private static void OneToMany(AnnotationConfigApplicationContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	private static void oneToOne(AnnotationConfigApplicationContext ctx) {
 		EmployeeRepository empRepo = ctx.getBean(EmployeeRepository.class);
 		Employee emp = new Employee("omkar", "puttagunta", "Senior Software Engineer");
