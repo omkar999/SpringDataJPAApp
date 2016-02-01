@@ -7,10 +7,10 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myapp.entities.Employee;
@@ -78,4 +78,25 @@ public class UserController {
 		System.out.println(empList.get(0).getFirstName());
 		return model;
 	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ModelAndView addUserGetReq(@RequestParam("id") String id) {
+		System.out.println("@RequestParam id to delete = " + id);
+		ModelAndView model = new ModelAndView("home");
+		employeeRepository.delete(Integer.parseInt(id));
+		return model;
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView addUserGetReq(@ModelAttribute("employee") Employee employee) {
+		int id = employee.getId();
+		System.out.println("ModelAttribute employeeId  = " + id);
+		ModelAndView model = new ModelAndView("home");
+		
+		employeeRepository.saveAndFlush(employee);
+		
+		return model;
+	}
+	
+	
 }

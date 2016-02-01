@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@EnableWebMvc
+/*@EnableWebMvc*/
 @EnableJpaRepositories(basePackages = { "com.myapp.repositories" })
 @ComponentScan(basePackages = { "com.myapp" })
 public class AppConfig extends WebMvcConfigurerAdapter {
@@ -60,9 +60,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		
+
 		factory.setPersistenceUnitName("empPersistence");
-		
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(Boolean.TRUE);
@@ -73,7 +72,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		factory.setPackagesToScan("com.myapp.entities");
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
+		jpaProperties.put("hibernate.hbm2ddl.auto", "create");
 		factory.setJpaProperties(jpaProperties);
 
 		factory.afterPropertiesSet();
